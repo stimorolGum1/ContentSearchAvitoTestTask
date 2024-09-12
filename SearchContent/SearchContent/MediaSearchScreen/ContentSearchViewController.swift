@@ -186,13 +186,13 @@ extension ContentSearchViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentSearchCell
         cell.contentImageView.loadImage(urlString: presenter.dataAtRowInContentCollectionView(index: indexPath.row).urls.small)
-        cell.descriptionLabel.text = presenter.dataAtRowInContentCollectionView(index: indexPath.row).altDescription
+        cell.descriptionLabel.text = presenter.dataAtRowInContentCollectionView(index: indexPath.row).altDescription ?? "no description"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.showDetailScreen(author: presenter.dataAtRowInContentCollectionView(index: indexPath.row).user.name,
-                                   description: presenter.dataAtRowInContentCollectionView(index: indexPath.row).altDescription!,
+        presenter.showDetailScreen(author: presenter.dataAtRowInContentCollectionView(index: indexPath.row).user.name ?? "no author",
+                                   description: presenter.dataAtRowInContentCollectionView(index: indexPath.row).altDescription ?? "no description",
                                    imageLink: presenter.dataAtRowInContentCollectionView(index: indexPath.row).urls.regular)
     }
 }

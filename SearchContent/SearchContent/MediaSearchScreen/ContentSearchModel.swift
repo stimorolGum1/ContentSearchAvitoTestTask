@@ -46,5 +46,5 @@ struct PhotoUrls: Codable {
 }
 
 struct User: Codable {
-    let name: String
+    let name: String?
 }
